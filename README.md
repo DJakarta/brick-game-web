@@ -1,5 +1,5 @@
 # brick-game-web
-Brick game like. Web version.  
+Brick game (https://img.sellercube.com/Uploadfile/6/SKU077785/20130613175323250.JPG) inspired app. Web version. 
 See also: https://github.com/DJakarta/brick-game-web  
 
 Copyright (C) 2017 Cristescu I. Bogdan Ion  
