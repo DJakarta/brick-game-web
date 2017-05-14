@@ -1,0 +1,414 @@
+<!DOCTYPE HTML>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>kLib Documentation</title>
+		<link rel="stylesheet" href="styles/docs.css" />
+		<script type="text/javascript" src="scripts/jquery.js"></script>
+		<script type="text/javascript" src="scripts/kLib.js" id="script"></script>
+		<meta charset="UTF-8" />
+	</head>
+	
+	<body>
+		<section unselectable="on" class="header">
+			<header id="pageTitle" unselectable="on" class="header">
+				kLib Documentation
+				<div unselectable="on" class="header"> 
+					<span unselectable="on" class="header">
+						*work in progress
+					</span>
+				</div>
+			</header>
+		</section>
+		
+		<section id="articleSection">
+			<article>
+				<h1>
+					Library Basic Info
+				</h1>
+				<article>
+					<h2>
+						Basics
+					</h2>
+					<article>
+						<h3>
+							Accessing the library
+						</h3>
+						The whole library is stored in the <code>kLib</code> object. For simplified writing, the <code>$k</code> object has a reference to the library. Therefore, functions can be accessed just like the object's properties and methods, in the following ways:
+						<code class="block">
+							kLib.debug.writeToConsole("text");
+						</code>
+						<aside>
+							The <code>kLib</code> object is the real object.
+						</aside>
+						<code class="block">
+							$k.debug.writeToConsole("text");
+						</code>
+						<aside>
+							The <code>$k</code> object has a reference to the <code>kLib</code> object.
+						</aside>
+					</article>
+					<article>
+						<h3>
+							Reference and function linking
+						</h3>
+						The kLib object itself is structured in a task-related way. For example, the information about the library can be accessed from the <code>kLib.basicInfo</code> object, and the <code>writeToConsole()</code> function from the <code>kLib.debug</code> object.<br />
+						However, for simplified code writing, the commonly used functions are linked directly to the main object, and some even to the window object, like so:
+						<code class="block">
+							cWrite("something");
+						</code>
+					</article>
+				</article>
+				<article>
+					<h2>
+						Version Properties And Methods
+					</h2>
+					<article>
+						<h3>
+							Version
+						</h3>
+						The version number is a string stored in the <code>version</code> property of the <code>basicInfo</code> object, containing a number with 1 decimal. It can be retrieved as a normal property:
+						<code class="block">
+							version=$k.basicInfo.version;<br />
+							alert(version);
+						</code>
+						<aside>
+							Since it is stored in a string, conversion to number is recommended before using it in mathematical calculations.
+						</aside>
+					</article>
+					<article>
+						<h3>
+							Build
+						</h3>
+						The build number is a string stored in the <code>build</code> property of the <code>basicInfo</code> object, containing a two digit integer. It can be retrieved as a normal property:
+						<code class="block">
+							build=$k.basicInfo.build;<br />
+							alert(build);
+						</code>
+						<aside>
+							Since it is stored in a string, conversion to number is recommended before using it in mathematical calculations.
+						</aside>
+					</article>
+					<article>
+						<h3>
+							Stage
+						</h3>
+						The stage of the library is a string stored in the <code>stage</code> property of the <code>basicInfo</code> object. It can be retrieved as a normal property:
+						<code class="block">
+							stage=$k.basicInfo.stage;<br />
+							alert(stage);
+						</code>
+						<aside>
+							The stage property can be one of the following:
+							<table>
+								<tr>
+									<th>
+										stage name
+									</th>
+									<th>
+										explanation
+									</th>
+								</tr>
+								<tr>
+									<td>
+										Final
+									</td>
+									<td>
+										Final state; only minor changes will be made from here
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Beta
+									</td>
+									<td>
+										Almost completed; most of the features working
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Testing
+									</td>
+									<td>
+										Pre-Beta version; the functions are tested for bugs before the definitive release
+									</td>
+								</tr>
+								<tr>
+									<td>
+										Alpha
+									</td>
+									<td>
+										Uncompleted version, but basic functions working; may have bugs
+									</td>
+								</tr>
+								<tr>
+									<td>
+										onWork
+									</td>
+									<td>
+										First versions; some of the basics may not be implemented yet
+									</td>
+								</tr>
+							</table>
+						</aside>
+					</article>
+					<article>
+						<h3>
+							Build date
+						</h3>
+						The build date is a string stored in the <code>buildDate</code> property of the <code>basicInfo</code> object. It can be retrieved as a normal property:
+						<code class="block">
+							buildDate=$k.basicInfo.buildDate;<br />
+							alert(buildDate);
+						</code>
+						<aside>
+							The string has the the ISO Date format (<code>YYYY-MM-DD</code>).
+						</aside>
+					</article>
+					<article>
+						<h3>
+							Version info
+						</h3>
+						The <code>getFullVersionInfo()</code> method returns a string containing a series of version properties.
+						<code class="block">
+							fullInfo=$k.basicInfo.getFullVersionInfo();<br />
+							alert(fullInfo);
+						</code>
+					</article>
+				</article>
+			</article>
+			<article>
+				<h1>
+					Extension Of Default JavaScript
+				</h1>
+				<article>
+					<h2>
+						Strings
+					</h2>
+					<article>
+						<h3>
+							Word delimitators
+						</h3>
+						String methods use custom kLib word separator characters to delimitate words. The string formed by any number of these in any order is considered a delimiter. Any substring between two delimiters is considered a word.
+						<aside>
+							These are the characters used to delimitate words:
+							<table>
+								<tr>
+									<th>
+										character
+									</th>
+									<th>
+										explanation
+									</th>
+								</tr>
+								<tr>
+									<td>
+										_
+									</td>
+									<td>
+										the underscore
+									</td>
+								</tr>
+								<tr>
+									<td>
+										-
+									</td>
+									<td>
+										the dash
+									</td>
+								</tr>
+								<tr>
+									<td>
+										\s
+									</td>
+									<td>
+										any whitespace character matched by the JavaScript RegExp
+									</td>
+								</tr>
+							</table>
+						</aside>
+					</article>
+					<article>
+						<h3>
+							Quickly find first and last character
+						</h3>
+						To speed up coding, kLib adds the <code>.firstChar()</code> and the <code>.lastChar()</code> methods to the default string object, which return the character from the first and last position in the string.
+						<code class="block">
+							myString="1 2 a b # $";<br />
+							alert(myString.firstChar()+" is the first, there's something in between, and the last one is "+myString.lastChar());
+						</code>
+					</article>
+					<article>
+						<h3>
+							Converting to camelCase
+						</h3>
+						kLib extends the functionality of the String object by creating a <code>.toCamelCase()</code> method. It works by deleting any word delimiter and converting the next character to uppercase.
+						<code class="block">
+							myString="this string will be converted to camelCase!";<br />
+							alert(myString.toCamelCase());<br />
+							myString2="--353 --Some _random $ _/ -    !~ 9text 33_TextT.me -sa -=dd";<br />
+							alert(myString2.toCamelCase());
+						</code>
+					</article>
+					<article>
+						<h3>
+							Converting to dash-case
+						</h3>
+						kLib extends the functionality of the String object by creating a <code>.toDashCase()</code> method. It works by replacing any word delimiter with a dash.
+						<code class="block">
+							myString="this string will be converted to dash-case!";<br />
+							alert(myString.toDashCase());<br />
+							myString2="--353 --Some _random $ _/ -    !~ 9text 33_TextT.me -sa -=dd";<br />
+							alert(myString2.toDashCase());
+						</code>
+					</article>
+					<article>
+						<h3>
+							Converting to underscore_case
+						</h3>
+						kLib extends the functionality of the String object by creating a <code>.toUnderscoreCase()</code> method. It works by replacing any word delimiter with an underscore.
+						<code class="block">
+							myString="this string will be converted to underscore_case!";<br />
+							alert(myString.toUnderscoreCase());<br />
+							myString2="--353 --Some _random $ _/ -    !~ 9text 33_TextT.me -sa -=dd";<br />
+							alert(myString2.toUnderscoreCase());
+						</code>
+					</article>
+					<article>
+						<h3>
+							Converting to $JSON_Case
+						</h3>
+						kLib extends the functionality of the String object by creating a <code>.toJSONCase()</code> method. It works by deleting any character not accepted in JavaScript variable names and removing all numbers from the beginning of the strings.
+						<code class="block">
+							myString="this string will be converted to $JSON_case!";<br />
+							alert(myString.toJSONCase());<br />
+							myString2="--353 --Some _random $ _/ -    !~ 9text 33_TextT.me -sa -=dd";<br />
+							alert(myString2.toJSONCase());
+						</code>
+						<aside>
+							JavaScript standards allow for more valid characters in variable naming, but <code>.toJSONCase()</code> method will only allow the most commonly used ones, presented bellow:
+							<table>
+								<tr>
+									<th>
+										character
+									</th>
+									<th>
+										explanation
+									</th>
+								</tr>
+								<tr>
+									<td>
+										_
+									</td>
+									<td>
+										the underscore
+									</td>
+								</tr>
+								<tr>
+									<td>
+										$
+									</td>
+									<td>
+										the dollar sign
+									</td>
+								</tr>
+								<tr>
+									<td>
+										[A-z]
+									</td>
+									<td>
+										any letters from uppercase A to lowercase z matched by the JavaScript RegExp
+									</td>
+								</tr>
+								<tr>
+									<td>
+										[0-9]
+									</td>
+									<td>
+										any digits from 0 to 9 matched by the JavaScript RegExp (not at the beginning of the string)
+									</td>
+								</tr>
+							</table>
+						</aside>
+					</article>
+					<article>
+						<h3>
+							Case differences
+						</h3>
+						You can use the following code to see the difference between cases:
+						<code class="block">
+							myString="see the difference!";<br />
+							myString2="--353 --Some _random $ _/ -    !~ 9text 33_TextT.me -sa -=dd";<br />
+							alert(<br />
+								"original:\n"+myString<br />
+								+"\n\n.toCamelCase():\n"+myString.toCamelCase()<br />
+								+"\n\n.toDashCase():\n"+myString.toDashCase()<br />
+								+"\n\n.toUnderscoreCase():\n"+myString.toUnderscoreCase()<br />
+								+"\n\n.toJSONCase():\n"+myString.toJSONCase()<br />
+							);<br />
+							alert(<br />
+								"original:\n"+myString2<br />
+								+"\n\n.toCamelCase():\n"+myString2.toCamelCase()<br />
+								+"\n\n.toDashCase():\n"+myString2.toDashCase()<br />
+								+"\n\n.toUnderscoreCase():\n"+myString2.toUnderscoreCase()<br />
+								+"\n\n.toJSONCase():\n"+myString2.toJSONCase()<br />
+							);<br />
+						</code>
+					</article>
+				</article>
+			</article>
+			<article>
+				<h1>
+					General Functions
+				</h1>
+				<article>
+					<h2>
+						Console Functions
+					</h2>
+					<article>
+						<h3>
+							Using the console
+						</h3>
+						To ease developement, kLib can create a simple console to which you can write text and debug your code. To write to the console, you can use the long <code>kLib.debug.writeToConsole()</code> or the short <code>cWrite()</code>.
+						<code class="block">
+							kLib.debug.writeToConsole("text");
+						</code>
+						<code class="block">
+							cWrite("text");
+						</code>
+						The functions accept 2 arguments. The first one is required, being the text to be written, and the second one is an optional boolean value which, when true, will overwrite the console with the new text. Notice how leaving the last argument blank, or setting it to 0 makes no difference, but any value that evaluates to the boolean true will overwrite the console.
+						<code class="block">
+							cWrite("writing1");
+							cWrite("writing2", 0);
+							cWrite("writing3", null);
+							cWrite("writing4", undefined);
+						</code>
+						<code class="block">
+							cWrite("overwriting1", 1);
+						</code>
+						<code class="block">
+							cWrite("overwriting2", "nothing but true");
+						</code>
+					</article>
+					<article>
+						<h3>
+							Closing the console
+						</h3>
+						You can close the console directly from JavaScript by calling the long <code>kLib.debug.closeConsole()</code> function or the short <code>cClose()</code> function. You can also manually close the console by double-clicking it. Open the console from above and try it below:
+						<code class="block">
+							kLib.debug.closeConsole();
+						</code>
+						<code class="block">
+							cClose();
+						</code>
+						The functions accept 1 boolean argument that, when evaluated to true (same as the overwriting argument from above), will clear the console at exit. If the argument is false or missing, at write time, the console will continue from previously existing text.
+						<code class="block">
+							cClose(1);
+						</code>
+					</article>
+				</article>
+			</article>			
+		</section>		
+		<script type="text/javascript" src="scripts/docs.js" id="script"></script>
+	</body>
+</html>

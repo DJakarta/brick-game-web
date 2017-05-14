@@ -1,0 +1,119 @@
+* {
+margin: 0px;
+padding: 0px;
+}
+
+html {
+text-align: center;
+width: 100%;
+}
+
+body {
+width: 100%;
+}
+
+#consoleDisplay {
+text-align: left;
+}
+
+#screen {
+display: inline-block;
+text-align: left;
+}
+
+#screen {
+border-style: solid;
+border-width: 1px;
+border-color: rgba(0, 0, 0, 1);
+background-color: rgba(223, 255, 191, 1);
+}
+
+#consoleBody {
+whiste-space: pre;
+font-family: monospace;
+text-align: left;
+position: fixed;
+bottom: 0px;
+width: 100%;
+height: 250px;
+background-color: rgba(223, 255, 191, 1);
+display: none;
+}
+
+#cmdBody {
+padding: 10px;
+width: 35%;
+height: 100%;
+box-sizing: border-box;
+-moz-box-sizing: border-box;
+display: inline-block;
+border-right-style: solid;
+border-right-width: 1px;
+border-right-color: rgba(95, 95, 95, 1);
+}
+
+#cmdOutput {
+background-color: rgba(191, 223, 159, 1);
+width: 100%;
+height: 190px;
+margin-bottom: 10px;
+padding-left: 5px;
+padding-right: 5px;
+box-sizing: border-box;
+-moz-box-sizing: border-box;
+overflow-x: hidden;
+overflow-y: scroll;
+}
+
+#cmdInput {
+font-family: monospace;
+border-style: none;
+background-color: rgba(191, 223, 159, 1);
+width: 100%;
+height: 30px;
+padding-left: 5px;
+padding-right: 5px;
+box-sizing: border-box;
+-moz-box-sizing: border-box;
+display: block;
+}
+
+#outputBody {
+position: absolute;
+top: 0px;
+right: 0px;
+height: 250px;
+padding: 10px;
+width: 65%;
+box-sizing: border-box;
+-moz-box-sizing: border-box;
+display: inline-block;
+}
+
+#outputScreen {
+width: 100%;
+height: 100%;
+background-color: rgba(191, 223, 159, 1);
+padding-left: 5px;
+padding-right: 5px;
+box-sizing: border-box;
+-moz-box-sizing: border-box;
+overflow-x: hidden;
+overflow-y: scroll;
+}
+
+#matrixDisplay {
+border-collapse: collapse;
+}
+
+#matrixDisplay td {
+height: 23px;
+width: 23px;
+}
+
+#matrixDisplay td.s1 {
+background-color: #cccccc;
+}
+#matrixDisplay td.s0 {
+background-color: #ffffbb;
+}
